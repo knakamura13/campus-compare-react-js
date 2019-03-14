@@ -54,10 +54,7 @@ const cardIndexStyle = {
 	left: '10px',
 	fontSize: '2em',
 	zIndex: '990',
-	textShadow: '-1px -1px 0 #ffffff88, 	\
-							1px -1px 0 #ffffff88, 		\
-							-1px 1px 0 #ffffff88, 		\
-							1px 1px 0 #ffffff88',
+	textShadow: '-1px -1px 0 #ffffff88, 1px -1px 0 #ffffff88, -1px 1px 0 #ffffff88, 1px 1px 0 #ffffff88',
 }
 
 const cardImageStyle = {

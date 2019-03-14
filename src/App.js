@@ -1,5 +1,3 @@
-'use strict';
-
 import React, { Component } from 'react';
 import University from './components/University';
 import Header from './components/Header';
@@ -7,7 +5,10 @@ import './App.css';
 
 // Yelp Fusion API Credentials.
 // Property of Unibui Inc.
+
+// eslint-disable-next-line
 const API_CLIENT = process.env.REACT_APP_YELP_CLIENT_ID;
+// eslint-disable-next-line
 const API_KEY = process.env.REACT_APP_YELP_API_KEY;
 
 (function fetchYelpBusinesses(businessType, maxDistance) {
@@ -15,7 +16,6 @@ const API_KEY = process.env.REACT_APP_YELP_API_KEY;
     
     // TODO: 
    	// (in progress) Fetch results from Yelp.
-   	
 	const yelp = require('yelp-fusion');
 
 	// Place holder for Yelp Fusion's API Key. Grab them
@@ -88,7 +88,7 @@ class App extends Component {
 		return (
 			<div className="App">
 				{/* Header / nav bar */}
-				<Header title="CAMPUS COMPARE"/>
+				<Header title="Campus Compare"/>
 
 				{/* Display a dynamic grid of Yelp businesses */}
 				<div style={universitiesGridStyle}>
