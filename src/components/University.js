@@ -1,33 +1,49 @@
+// Import npm packages
 import React, { Component } from 'react';
 
-class University extends Component {
+
+
+
+/****************
+ Component Class
+*****************/
+
+
+export default class University extends Component {
   render() {
   	// Map each university to its own square card.
   	return this.props.universities.map((university) =>  (
-			<div style={cardContainerStyle}>
-				<p style={cardIndexStyle}>{ university.id }</p>
-				<img style={cardImageStyle} src={university.image} alt="university-yelp" />
-				<div style={cardFooterStyle}>
-					<b style={cardTitleStyle}>{ university.name }</b>
-					{/* Display either `miles` or `mile` based on `university.distance`. */}
-					{university.distance > 1 &&
-						<p style={cardSubtitleStyle}>{ university.distance } miles away</p>
-					}
-					{university.distance <= 1 &&
-						<p style={cardSubtitleStyle}>{ university.distance } mile away</p>
-					}
-				</div>
+		<div style={cardContainerStyle}>
+			<p style={cardIndexStyle}>{ university.id }</p>
+			<img style={cardImageStyle} src={university.image} alt="university-yelp" />
+			<div style={cardFooterStyle.container}>
+				<b style={cardFooterStyle.title}>{ university.name }</b>
+				{/* Display either `miles` or `mile` based on `university.distance`. */}
+				{university.distance > 1 &&
+					<p style={cardFooterStyle.subtitle}>{ university.distance } miles away</p>
+				}
+				{university.distance <= 1 &&
+					<p style={cardFooterStyle.subtitle}>{ university.distance } mile away</p>
+				}
 			</div>
-  	));
+		</div>
+	));
   }
 }
 
-export default University;
 
-// TODO: Use screen width divided by num-rows.
-const defaultHeightWidth = '320px';
 
-const defaultBorderRadius = '8px';
+
+/*************
+ Local Styles
+**************/
+
+
+// Width and height of the square cards.
+const cardWidth = '320px';
+
+// Corner radius of the square cards.
+const cardBorderRadius = '8px';
 
 /* Card container */
 const cardContainerStyle = {
@@ -35,17 +51,17 @@ const cardContainerStyle = {
 	backgroundColor: "#fff",
 	margin: '10px',
 	padding: '12px',
-	minWidth: defaultHeightWidth,
-	maxWidth: defaultHeightWidth,
-	height: defaultHeightWidth,
+	minWidth: cardWidth,
+	maxWidth: cardWidth,
+	height: cardWidth,
 	boxShadow: '2px 2px 5px #00000033',
 	textAlign: 'center',
-	borderRadius: defaultBorderRadius,
+	borderRadius: cardBorderRadius,
 }
 
-/* Card index text */
+/* Card index number (counter) */
 const cardIndexStyle = {
-	color: '#000',
+	color: '#fff',
 	fontWeight: 'bold',
 	height: '0',
 	width: '0',
@@ -54,12 +70,10 @@ const cardIndexStyle = {
 	left: '10px',
 	fontSize: '2em',
 	zIndex: '990',
-	textShadow: '-1px -1px 0 #ffffff88, 	\
-							1px -1px 0 #ffffff88, 		\
-							-1px 1px 0 #ffffff88, 		\
-							1px 1px 0 #ffffff88',
+	textShadow: '-1px -1px 2px #000, 1px -1px 2px #000, -1px 1px 2px #000, 1px 1px 2px #000',
 }
 
+/* Card image (background) */
 const cardImageStyle = {
 	position: 'absolute',
 	top: '0',
@@ -68,25 +82,27 @@ const cardImageStyle = {
 	left: '0',
 	height: '100%',
 	width: '100%',
-	borderRadius: defaultBorderRadius,
+	borderRadius: cardBorderRadius,
 }
 
-/* Foot section */
+/* Card footer section */
 const cardFooterStyle = {
-	height: '80px',
-	padding: '16px 8px 8px',
-	position: 'absolute',
-	bottom: '0',
-	right: '0',
-	left: '0',
-	backgroundColor: '#00000099',
-	borderBottomRightRadius: defaultBorderRadius,
-	borderBottomLeftRadius: defaultBorderRadius,
-}
-const cardTitleStyle = {
-	color: '#fff',
-	fontSize: '18px',
-}
-const cardSubtitleStyle = {
-	color: '#fff',
+	container: {
+		height: '80px',
+		padding: '16px 8px 8px',
+		position: 'absolute',
+		bottom: '0',
+		right: '0',
+		left: '0',
+		backgroundColor: '#00000099',
+		borderBottomRightRadius: cardBorderRadius,
+		borderBottomLeftRadius: cardBorderRadius,
+	},
+	title: {
+		color: '#fff',
+		fontSize: '18px',
+	},
+	subtitle: {
+		color: '#fff',
+	}
 }
