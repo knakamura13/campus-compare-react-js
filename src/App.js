@@ -9,31 +9,37 @@ class App extends Component {
 		universities: [
 			{
 				id: 1,
+				image: 'https://placeimg.com/320/320/animals',
 				name: 'Stanford University',
 				distance: 1
 			},
 			{
 				id: 2,
+				image: 'https://placeimg.com/320/320/arch',
 				name: 'University of California: Berkeley',
 				distance: 1
 			},
 			{
 				id: 3,
+				image: 'https://placeimg.com/320/320/nature',
 				name: 'Palo Alto University',
 				distance: 1
 			},
 			{
 				id: 4,
+				image: 'https://placeimg.com/320/320/people',
 				name: 'Stanford University',
 				distance: 1
 			},
 			{
 				id: 5,
+				image: 'https://placeimg.com/320/320/tech',
 				name: 'University of California: Berkeley',
 				distance: 1
 			},
 			{
 				id: 6,
+				image: 'https://placeimg.com/320/320/arch/grayscale',
 				name: 'Palo Alto University',
 				distance: 1
 			}
@@ -44,7 +50,7 @@ class App extends Component {
 		return (
 			<div className="App">
 				{/* Header / nav bar */}
-				<Header title="Campus Compare"/>
+				<Header title="CAMPUS COMPARE"/>
 
 				{/* Display a dynamic grid of Yelp businesses */}
 				<div style={universitiesGridStyle}>
@@ -57,11 +63,12 @@ class App extends Component {
 
 export default App;
 
-var universitiesGridStyle = {
+const universitiesGridStyle = {
 	position: 'absolute',
-	top: '150px',
+	top: '200px',
+	height: '100%',
 	width: '100%',
-	backgroundColor: '#E0E0E0',
+	padding: '10px',
 	display: 'flex',
 	flexWrap: 'wrap',
 	alignContent: 'flex-start',
