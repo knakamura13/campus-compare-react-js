@@ -8,27 +8,30 @@ import React, { Component } from 'react';
  Component Class
 *****************/
 
-
 export default class University extends Component {
-  render() {
-  	// Map each university to its own square card.
-  	return this.props.universities.map((university) =>  (
-		<div style={cardContainerStyle}>
-			<p style={cardIndexStyle}>{ university.id + 1 }</p>
-			<img style={cardImageStyle} src={university.image_url} alt="university-yelp" />
-			<div style={cardFooterStyle.container}>
-				<b style={cardFooterStyle.title}>{ university.name }</b>
-				{/* Display either `miles` or `mile` based on `university.distance`. */}
-				{university.distance > 1 &&
-					<p style={cardFooterStyle.subtitle}>{ university.distance } miles away</p>
-				}
-				{university.distance <= 1 &&
-					<p style={cardFooterStyle.subtitle}>{ university.distance } mile away</p>
-				}
+	viewUniversityDetails(university) {
+		alert(university.name);
+	}
+
+  	render() {
+	  	// Map each university to its own square card.
+	  	return this.props.universities.map((university) =>  (
+			<div style={cardContainerStyle} onClick={() => this.viewUniversityDetails(university)}>
+				<p style={cardIndexStyle}>{ university.id + 1 }</p>
+				<img style={cardImageStyle} src={university.image_url} alt="university-yelp" />
+				<div style={cardFooterStyle.container}>
+					<b style={cardFooterStyle.title}>{ university.name }</b>
+					{/* Display either `miles` or `mile` based on `university.distance`. */}
+					{university.distance > 1 &&
+						<p style={cardFooterStyle.subtitle}>{ university.distance } miles away</p>
+					}
+					{university.distance <= 1 &&
+						<p style={cardFooterStyle.subtitle}>{ university.distance } mile away</p>
+					}
+				</div>
 			</div>
-		</div>
-	));
-  }
+		));
+  	}
 }
 
 
