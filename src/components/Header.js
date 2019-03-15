@@ -1,9 +1,22 @@
+// Import npm packages
 import React, { Component } from 'react';
 import MediaQuery from 'react-responsive';
+
+// Import custom files
 import logo from '../logo.png';
 
-// Header with a logo and title.
-class Header extends Component {
+
+
+
+/****************
+ Component Class
+*****************/
+
+
+/*
+ * A top-positioned header view with a logo and title.
+ */
+export default class Header extends Component {
   render() {
   	return (
   		<div>
@@ -35,8 +48,15 @@ class Header extends Component {
   }
 }
 
-export default Header;
 
+
+
+/*************
+ Local Styles
+**************/
+
+
+/* Header component (container) */
 const headerStyle = {
 	main: {
 		color: '#fff',
@@ -51,7 +71,7 @@ const headerStyle = {
 		textShadow: '2px 2px 5px #00000050',
 	},
 	large: {
-		height: '130px',
+		height: '140px',
 		flexDirection: 'column',
 		justifyContent: 'center',
 	},
@@ -70,6 +90,7 @@ const headerStyle = {
 	}
 }
 
+/* Header logo */
 const logoStyle = {
 	main: {
 		margin: '0 auto 0 auto',

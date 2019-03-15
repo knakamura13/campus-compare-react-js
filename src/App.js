@@ -1,47 +1,41 @@
+// Import npm packages
 import React, { Component } from 'react';
+import MediaQuery from 'react-responsive';
+
+// Import custom components
 import University from './components/University';
 import Header from './components/Header';
+
+// Import custom files
 import './App.css';
 
-// Yelp Fusion API Credentials.
-// Property of Unibui Inc.
 
+
+
+/**********
+ Constants
+***********/
+
+
+// Create an instance of `yelp-fusion`'s custom class.
+const yelp = require('yelp-fusion');
+
+// Yelp Fusion API Credentials; Property of Unibui Inc.
 // eslint-disable-next-line
 const API_CLIENT = process.env.REACT_APP_YELP_CLIENT_ID;
+
 // eslint-disable-next-line
 const API_KEY = process.env.REACT_APP_YELP_API_KEY;
 
-(function fetchYelpBusinesses(businessType, maxDistance) {
-    let result = {};
-    
-    // TODO: 
-   	// (in progress) Fetch results from Yelp.
-	const yelp = require('yelp-fusion');
 
-	// Place holder for Yelp Fusion's API Key. Grab them
-	// from https://www.yelp.com/developers/v3/manage_app
-	const apiKey = '5PhACrZEOw4XW_8PBt8VxZTc7ZYkLpatvmNVJLKG60slfnAj_I3ajJfnriq2ZTM_hLSaDyFH2yIJ0by6TZqvwtCPqaRgDunoMdjFLtV4HpQtYYPWSG06nWa-JqDvW3Yx';
 
-	const searchRequest = {
-	  term: 	'Four Barrel Coffee',
-	  location: 'san francisco, ca',
-	  limit: 	'50'
-	};
 
-	const client = yelp.client(apiKey);
+/****************
+ Component Class
+*****************/
 
-	client.search(searchRequest).then(response => {
-	  const body = response.jsonBody;
-	  const prettyJson = JSON.stringify(body, null, 4);
-	  console.log(prettyJson);
-	}).catch(e => {
-	  console.log(e);
-	});
 
-    return result;
-})();
-
-class App extends Component {
+export default class App extends Component {
 	// TODO: Populate state using Yelp Fusion API.
 	state = {
 		universities: [
@@ -87,28 +81,120 @@ class App extends Component {
 	render() {
 		return (
 			<div className="App">
-				{/* Header / nav bar */}
-				<Header title="Campus Compare"/>
+		  		{/* Large screen width (desktop device) */}
+		  		<MediaQuery minWidth={992}>
+					{/* Header / nav bar */}
+					<Header title="Campus Compare"/>
 
-				{/* Display a dynamic grid of Yelp businesses */}
-				<div style={universitiesGridStyle}>
-					<University universities={this.state.universities} />
-				</div>
+					{/* Display a dynamic grid of Yelp businesses */}
+					<div style={{...universitiesGridStyle.main, ...universitiesGridStyle.large}}>
+						<University universities={this.state.universities} />
+					</div>
+				</MediaQuery>
+
+				{/* Medium screen width (sized like a tablet) */}
+		  		<MediaQuery minWidth={768} maxWidth={991}>
+					{/* Header / nav bar */}
+					<Header title="Campus Compare"/>
+
+					{/* Display a dynamic grid of Yelp businesses */}
+					<div style={{...universitiesGridStyle.main, ...universitiesGridStyle.medium}}>
+						<University universities={this.state.universities} />
+					</div>
+				</MediaQuery>
+
+				{/* Small screen width (mobile device) */}
+		  		<MediaQuery maxWidth={767}>
+					{/* Header / nav bar */}
+					<Header title="Campus Compare"/>
+
+					{/* Display a dynamic grid of Yelp businesses */}
+					<div style={{...universitiesGridStyle.main, ...universitiesGridStyle.small}}>
+						<University universities={this.state.universities} />
+					</div>
+				</MediaQuery>
 			</div>
 		);
 	}
 }
 
-export default App;
 
+
+
+/*****************
+ Custom Functions
+******************/
+
+
+/* 
+ * Query local businesses from Yelp using the Yelp Fusion API.
+ * Note: Uses npm package `yelp-fusion`.
+ *
+ * @param 	searchTerm	String 	Describes the business type, name, or other attribute.
+ * @param	location	String	Describes the search location based on zip code, address, city, etc.
+ * @param 	radius		Int 	Sets the radius of the search area that matched businesses must reside in.
+ */
+(function fetchYelpBusinesses(searchTerm, location, radius) {
+    let result = {};
+
+	const apiKey = API_KEY;
+
+	// TODO: Replace with function parameters.
+	// Populate some query parameters.
+	const searchRequest = {
+	  term: 	'Four Barrel Coffee',
+	  location: 'san francisco, ca',
+	  limit: 	'50'
+	};
+
+	// Authenticate with Yelp Fusion API.
+	const client = yelp.client(apiKey);
+
+	// Execute an API request.
+	client.search(searchRequest).then(response => {
+	  const body = response.jsonBody;
+
+	  // Set the result which is this function's output.
+	  result = body;
+
+	  // For debugging purposes:
+	  const prettyJson = JSON.stringify(body, null, 4);
+	  console.log(prettyJson);
+	}).catch(e => {
+		// Handle errors thrown by Yelp Fusion.
+	 	console.log(e);
+	});
+
+    return result;
+})(); /* End: fetchYelpBusinesses */
+
+
+
+
+/*************
+ Local Styles
+**************/
+
+
+/* Main grid view listing local businesses */
 const universitiesGridStyle = {
-	position: 'absolute',
-	top: '200px',
-	height: '100%',
-	width: '100%',
-	padding: '10px',
-	display: 'flex',
-	flexWrap: 'wrap',
-	alignContent: 'flex-start',
-	justifyContent: 'center'
+	main: {
+		position: 'absolute',
+		height: '100%',
+		width: '100%',
+		padding: '10px',
+		display: 'flex',
+		flexWrap: 'wrap',
+		alignContent: 'flex-start',
+		justifyContent: 'center',
+	},
+	large: {
+		top: '140px',
+	},
+	medium: {
+		top: '120px',
+	},
+	small: {
+		top: '50px',
+	}
 }
