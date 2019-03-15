@@ -14,8 +14,8 @@ export default class University extends Component {
   	// Map each university to its own square card.
   	return this.props.universities.map((university) =>  (
 		<div style={cardContainerStyle}>
-			<p style={cardIndexStyle}>{ university.id }</p>
-			<img style={cardImageStyle} src={university.image} alt="university-yelp" />
+			<p style={cardIndexStyle}>{ university.id + 1 }</p>
+			<img style={cardImageStyle} src={university.image_url} alt="university-yelp" />
 			<div style={cardFooterStyle.container}>
 				<b style={cardFooterStyle.title}>{ university.name }</b>
 				{/* Display either `miles` or `mile` based on `university.distance`. */}
