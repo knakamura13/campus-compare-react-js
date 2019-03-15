@@ -27,19 +27,6 @@ const API_CLIENT = process.env.REACT_APP_YELP_CLIENT_ID;
 // eslint-disable-next-line
 const API_KEY = process.env.REACT_APP_YELP_API_KEY;
 
-<<<<<<< HEAD
-(function fetchYelpBusinesses(businessType, maxDistance) {
-    let result = {};
-    
-    // TODO: 
-   	// (in progress) Fetch results from Yelp.
-	const yelp = require('yelp-fusion');
-
-	// Place holder for Yelp Fusion's API Key. Grab them
-	// from https://www.yelp.com/developers/v3/manage_app
-	const apiKey = API_KEY;
-=======
->>>>>>> f220809... Major refactor and additional dynamic styling.
 
 
 
