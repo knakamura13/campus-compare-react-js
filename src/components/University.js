@@ -1,6 +1,6 @@
 // Import npm packages
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 
 
@@ -11,14 +11,31 @@ import { BrowserRouter, Route } from 'react-router-dom';
 
 
 export default class University extends Component {
-	viewUniversityDetails(university) {
-		alert(university.name);
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			redirect: false,
+			university: null
+		};
 	}
 
+	handleOnClick = (university) => {
+	  this.setState({
+	  	redirect: true,
+	  	university: university
+	  });
+	}
+
+
   	render() {
+  		if (this.state.redirect) {
+			return <Redirect push to={{ pathname: "/details", state: {university: this.state.university} }} />;
+		}
+
 	  	// Map each university to its own square card.
 	  	return this.props.universities.map((university) =>  (
-			<div style={cardContainerStyle} onClick={() => this.viewUniversityDetails(university)}>
+			<div style={cardContainerStyle} onClick={() => this.handleOnClick(university)}>
 				<p style={cardIndexStyle}>{ university.id + 1 }</p>
 				<img style={cardImageStyle} src={university.image_url} alt="university-yelp" />
 				<div style={cardFooterStyle.container}>
