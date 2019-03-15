@@ -35,19 +35,24 @@ export default class App extends Component {
 	constructor(props) {
 		super(props);
 
-		// Configure search parameters.
+		// Record how many items have loaded in total.
+		var iterations = 0;
 
-		// TODO: offset by 3 at a time to query many pages incrementally.
+		// Load 50 more items.
+		var offset = 0;
 
 		const searchRequest = {
 			term: 		'University',
 			location: 	'94306',
 			limit: 		'50',
-			offset: 	'0'
+			offset: 	offset
 		};
 
 		// Authenticate with Yelp Fusion API.
 		const client = yelp.client(API_KEY);	// API_KEY defined as a secret variable in `.env`.
+
+		// Store the current state to help update the state from within the `client.search` scope.
+		let temp_state = this.state;
 
 		// Execute an API request.
 		client.search(searchRequest).then(response => {
@@ -55,18 +60,19 @@ export default class App extends Component {
 
 			yelp_universities.forEach(function(university, i) {
 				// Replace the unique id of each university with an index value.
-				yelp_universities[i].id = i;
+				yelp_universities[i].id = iterations++;
 
 				// Check if yelp has an image for each university.
 				if (!university.image_url) {
 					// Replace the university's image_url with a randomized placeholder image.
 					yelp_universities[i].image_url = "https://picsum.photos/320/?random";
 				}
+
+				temp_state.universities.push(yelp_universities[i]);
 			});
 
 			// Update the state and then reload the page.
-			this.state.universities = yelp_universities;
-			this.setState({ state: this.state });
+			this.setState({ state: temp_state });
 		}).catch(e => {
 			// Handle errors thrown by Yelp Fusion.
 		 	console.log(e);
