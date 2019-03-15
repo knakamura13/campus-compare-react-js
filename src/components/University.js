@@ -54,7 +54,7 @@ const cardContainerStyle = {
 	minWidth: cardWidth,
 	maxWidth: cardWidth,
 	height: cardWidth,
-	boxShadow: '2px 2px 5px #00000033',
+	boxShadow: '2px 2px 5px #00000050',
 	textAlign: 'center',
 	borderRadius: cardBorderRadius,
 }
