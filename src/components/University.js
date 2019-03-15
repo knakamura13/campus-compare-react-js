@@ -1,5 +1,6 @@
 // Import npm packages
 import React, { Component } from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 
 
@@ -7,6 +8,7 @@ import React, { Component } from 'react';
 /****************
  Component Class
 *****************/
+
 
 export default class University extends Component {
 	viewUniversityDetails(university) {
