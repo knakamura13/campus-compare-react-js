@@ -42,10 +42,11 @@ export default class University extends Component {
 					<b style={cardFooterStyle.title}>{ university.name }</b>
 					{/* Display either `miles` or `mile` based on `university.distance`. */}
 					{university.distance > 1 &&
-						<p style={cardFooterStyle.subtitle}>{ university.distance } miles away</p>
+						<p style={cardFooterStyle.subtitle}>{ 
+							university.distance.toString().split(".")[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",")} miles away</p>
 					}
 					{university.distance <= 1 &&
-						<p style={cardFooterStyle.subtitle}>{ university.distance } mile away</p>
+						<p style={cardFooterStyle.subtitle}>{ university.distance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") }} mile away</p>
 					}
 				</div>
 			</div>
@@ -79,6 +80,7 @@ const cardContainerStyle = {
 	boxShadow: '2px 2px 5px #00000050',
 	textAlign: 'center',
 	borderRadius: cardBorderRadius,
+	cursor: 'pointer',
 }
 
 /* Card index number (counter) */

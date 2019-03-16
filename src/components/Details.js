@@ -45,24 +45,28 @@ export default class Details extends Component {
 		  				<img style={{...universityImageStyle.main, ...universityImageStyle.large}} src={this.state.university.image_url} alt="university-yelp" />
 		  				
 		  				<div style={{...universityInfoStyle.main, ...universityInfoStyle.large}}>
-			  				<div>
-								<b>Address</b>
-			  					<p>{this.state.university.location.display_address[0]}</p>
-			  					<p>{this.state.university.location.display_address[1]}</p>
-			  				</div>
-			  				<div>
-			  					<a style={mapUrlStyle} href={mapURL}>View on Google Maps</a>
+		  					<div>
+				  				<div>
+									<b>Address</b>
+				  					<p>{this.state.university.location.display_address[0]}</p>
+				  					<p>{this.state.university.location.display_address[1]}</p>
+				  				</div>
+				  				<div>
+				  					<a style={mapUrlStyle} href={mapURL}>View on Google Maps</a>
+				  				</div>
 			  				</div>
 
-			  				<div style={dividerStyle}></div>
+			  				<div style={{...dividerStyle.main, ...dividerStyle.large}}></div>
 
 			  				<div>
-								<b>Phone number</b>
-			  					<p>{this.state.university.display_phone}</p>
-			  				</div>
-			  				<div>
-			  					<a style={mapUrlStyle} href={"tel:" + this.state.university.phone}>Call {this.state.university.name}</a>
-			  				</div>
+				  				<div>
+									<b>Phone number</b>
+				  					<p>{this.state.university.display_phone}</p>
+				  				</div>
+				  				<div>
+				  					<a style={mapUrlStyle} href={"tel:" + this.state.university.phone}>Call {this.state.university.name}</a>
+				  				</div>
+				  			</div>
 		  				</div>
 
 		  				<a style={yelpUrlStyle} href={this.state.university.url}>Visit on Yelp</a>
@@ -76,22 +80,26 @@ export default class Details extends Component {
 		  				
 		  				<div style={{...universityInfoStyle.main, ...universityInfoStyle.medium}}>
 			  				<div>
-								<b>Address</b>
-			  					<p>{this.state.university.location.display_address[0]}</p>
-			  					<p>{this.state.university.location.display_address[1]}</p>
-			  				</div>
-			  				<div>
-			  					<a style={mapUrlStyle} href={mapURL}>View on Google Maps</a>
+				  				<div>
+									<b>Address</b>
+				  					<p>{this.state.university.location.display_address[0]}</p>
+				  					<p>{this.state.university.location.display_address[1]}</p>
+				  				</div>
+				  				<div>
+				  					<a style={mapUrlStyle} href={mapURL}>View on Google Maps</a>
+				  				</div>
 			  				</div>
 
-			  				<div style={dividerStyle}></div>
+			  				<div style={{...dividerStyle.main, ...dividerStyle.medium}}></div>
 
-			  				<div>
-								<b>Phone number</b>
-			  					<p>{this.state.university.display_phone}</p>
-			  				</div>
-			  				<div>
-			  					<a style={mapUrlStyle} href={"tel:" + this.state.university.phone}>Call {this.state.university.name}</a>
+			  				<div style={{marginLeft: '40px'}}>
+				  				<div>
+									<b>Phone number</b>
+				  					<p>{this.state.university.display_phone}</p>
+				  				</div>
+				  				<div>
+				  					<a style={mapUrlStyle} href={"tel:" + this.state.university.phone}>Call {this.state.university.name}</a>
+				  				</div>
 			  				</div>
 		  				</div>
 
@@ -105,23 +113,27 @@ export default class Details extends Component {
 		  				<img style={{...universityImageStyle.main, ...universityImageStyle.small}} src={this.state.university.image_url} alt="university-yelp" />
 		  				
 		  				<div style={{...universityInfoStyle.main, ...universityInfoStyle.small}}>
-			  				<div>
-								<b>Address</b>
-			  					<p>{this.state.university.location.display_address[0]}</p>
-			  					<p>{this.state.university.location.display_address[1]}</p>
-			  				</div>
-			  				<div>
-			  					<a style={mapUrlStyle} href={mapURL}>View on Google Maps</a>
+		  					<div>
+				  				<div>
+									<b>Address</b>
+				  					<p>{this.state.university.location.display_address[0]}</p>
+				  					<p>{this.state.university.location.display_address[1]}</p>
+				  				</div>
+				  				<div>
+				  					<a style={mapUrlStyle} href={mapURL}>View on Google Maps</a>
+				  				</div>
 			  				</div>
 
-			  				<div style={dividerStyle}></div>
+			  				<div style={{...dividerStyle.main, ...dividerStyle.small}}></div>
 
-			  				<div>
-								<b>Phone number</b>
-			  					<p>{this.state.university.display_phone}</p>
-			  				</div>
-			  				<div>
-			  					<a style={mapUrlStyle} href={"tel:" + this.state.university.phone}>Call {this.state.university.name}</a>
+			  				<div style={{marginLeft: '40px'}}>
+				  				<div>
+									<b>Phone number</b>
+				  					<p>{this.state.university.display_phone}</p>
+				  				</div>
+				  				<div>
+				  					<a style={mapUrlStyle} href={"tel:" + this.state.university.phone}>Call {this.state.university.name}</a>
+				  				</div>
 			  				</div>
 		  				</div>
 		  				<a style={yelpUrlStyle} href={this.state.university.url}>Visit on Yelp</a>
@@ -183,25 +195,43 @@ const universityInfoStyle = {
 		padding: '15px',
 		border: '1px solid #ddd',
 		borderRadius: '8px',
-		maxWidth: '50%'
 	},
 	large: {
 		float: 'right',
+		maxWidth: '50%',
 	},
 	medium: {
 		float: 'none',
-		marginTop: '20px'
+		display: 'flex',
+		flexDirection: 'row',
+		marginTop: '20px',
+		maxWidth: '70%',
 	},
 	small: {
 		float: 'none',
-		marginTop: '20px'
+		display: 'flex',
+		flexDirection: 'row',
+		marginTop: '20px',
+		maxWidth: '100%',
 	}
 }
 const dividerStyle = {
-	height: '1px',
-	width: '100%',
-	margin: '5px auto 5px',
-	background: '#ddd'
+	main: {
+		background: '#ddd'
+	},
+	large: {
+		height: '1px',
+		width: '100%',
+		margin: '5px auto 5px',
+	},
+	medium:{
+		height: '100%',
+		width: '1px',
+	},
+	small: {
+		height: '100%',
+		width: '1px',
+	}
 }
 
 const mapUrlStyle = {

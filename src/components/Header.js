@@ -23,24 +23,45 @@ export default class Header extends Component {
 	  		{/* Large screen width (desktop device) */}
 	  		<MediaQuery minWidth={992}>
 		  		<div style={{...headerStyle.main, ...headerStyle.large}}>
-		  			<img src={logo} alt="Logo" style={{...logoStyle.main, ...logoStyle.large}}/>
-					<h1>{ this.props.title }</h1>
+		  			{/* Logo */}
+		  			<a style={{...logoStyle.main, ...logoStyle.large}} href="/">
+		  				<img style={{...logoStyle.main, ...logoStyle.large}} src={logo} alt="Logo"/>
+		  			</a>
+
+		  			{/* Page title */}
+		  			<a href="/">
+						<h1 style={{color: 'white'}}>{ this.props.title }</h1>
+					</a>
 				</div>
 			</MediaQuery>
 
 			{/* Medium screen width (sized like a tablet) */}
 	  		<MediaQuery minWidth={768} maxWidth={991}>
 		  		<div style={{...headerStyle.main, ...headerStyle.medium}}>
-		  			<img src={logo} alt="Logo" style={{...logoStyle.main, ...logoStyle.medium}}/>
-					<h1>{ this.props.title }</h1>
+		  			{/* Logo */}
+		  			<a style={{...logoStyle.main, ...logoStyle.medium}} href="/">
+		  				<img style={{...logoStyle.main, ...logoStyle.medium}} src={logo} alt="Logo"/>
+		  			</a>
+
+		  			{/* Page title */}
+		  			<a href="/">
+						<h1 style={{color: 'white'}}>{ this.props.title }</h1>
+					</a>				
 				</div>
 			</MediaQuery>
 
 			{/* Small screen width (mobile device) */}
 	  		<MediaQuery maxWidth={767}>
 		  		<div style={{...headerStyle.main, ...headerStyle.small}}>
-		  			<img src={logo} alt="Logo" style={{...logoStyle.main, ...logoStyle.small}}/>
-					<h1>{ this.props.title }</h1>
+		  			{/* Logo */}
+		  			<a style={{...logoStyle.main, ...logoStyle.small}} href="/">
+		  				<img style={{...logoStyle.main, ...logoStyle.small}} src={logo} alt="Logo"/>
+		  			</a>
+
+		  			{/* Page title */}
+		  			<a href="/">
+						<h1 style={{color: 'white'}}>{ this.props.title }</h1>
+					</a>				
 				</div>
 			</MediaQuery>
 		</div>
