@@ -39,6 +39,11 @@ export default class Details extends Component {
 		  			<div style={{...universityDetailStyle.main, ...universityDetailStyle.large}}>
 		  				<h1>{this.state.university.name}</h1>
 		  				<img style={{...universityImageStyle.main, ...universityImageStyle.large}} src={this.state.university.image_url} alt="university-yelp" />
+		  				<div>
+							<b>Address</b>
+		  					<p>{this.state.university.location.display_address[0]}</p>
+		  					<p>{this.state.university.location.display_address[1]}</p>
+		  				</div>
 		  				<a style={yelpUrlStyle} href={this.state.university.url}>Visit on Yelp</a>
 		  			</div>
 				</MediaQuery>
@@ -48,6 +53,11 @@ export default class Details extends Component {
 		  			<div style={{...universityDetailStyle.main, ...universityDetailStyle.medium}}>
 		  				<h1>{this.state.university.name}</h1>
 		  				<img style={{...universityImageStyle.main, ...universityImageStyle.medium}} src={this.state.university.image_url} alt="university-yelp" />
+						<div>
+							<b>Address</b>
+		  					<p>{this.state.university.location.display_address[0]}</p>
+		  					<p>{this.state.university.location.display_address[1]}</p>
+		  				</div>
 						<a style={yelpUrlStyle} href={this.state.university.url}>Visit on Yelp</a>
 		  			</div>
 				</MediaQuery>
@@ -57,6 +67,11 @@ export default class Details extends Component {
 		  			<div style={{...universityDetailStyle.main, ...universityDetailStyle.small}}>
 		  				<h1>{this.state.university.name}</h1>
 		  				<img style={{...universityImageStyle.main, ...universityImageStyle.small}} src={this.state.university.image_url} alt="university-yelp" />
+		  				<div>
+							<b>Address</b>
+		  					<p>{this.state.university.location.display_address[0]}</p>
+		  					<p>{this.state.university.location.display_address[1]}</p>
+		  				</div>
 		  				<a style={yelpUrlStyle} href={this.state.university.url}>Visit on Yelp</a>
 		  			</div>
 				</MediaQuery>
